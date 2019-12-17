@@ -19,7 +19,7 @@ public class CachingRoute extends RouteBuilder {
                 .to(ehCacheCamelEndpoint)
                 .choice()
                     .when(header(EhcacheConstants.ACTION_HAS_RESULT).isNotEqualTo("true"))
-                        .log("No cache hit yet.. Fetching data from internal Bean")
+                        .log("No cache hit yet... Fetching data from internal Bean")
                         .bean(MyBean.class)
                         .setHeader(EhcacheConstants.ACTION, constant(EhcacheConstants.ACTION_PUT))
                         .setHeader(EhcacheConstants.KEY, constant("token"))
